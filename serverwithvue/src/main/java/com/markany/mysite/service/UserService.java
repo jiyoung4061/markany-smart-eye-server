@@ -21,6 +21,13 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
+	public void joinUser(UserVo uservo) {
+		userRepository.insert(uservo);
+	}
+	
+	
+	
+	
 	public UserVo getUser(UserVo vo) {
 		// System.out.println("findbyEmail-->" + userRepository.findByEmail(vo.getEmail()));
 		// return userRepository.findByEmailAndPassword2(vo);
@@ -32,14 +39,14 @@ public class UserService {
 	
 	
 	
-	public boolean join(UserVo vo) {
-		LOGGER.info("before--->" + vo);
-		int count = userRepository.insert(vo);
-		LOGGER.info("after--->" + vo);
-
-		return count == 1;
-	}
-	
+//	public boolean join(UserVo vo) {
+//		LOGGER.info("before--->" + vo);
+//		int count = userRepository.insert(vo);
+//		LOGGER.info("after--->" + vo);
+//
+//		return count == 1;
+//	}
+//	
 
 	public UserVo getUser(Long no) {
 		return userRepository.findByNo(no);

@@ -22,7 +22,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		UserVo vo = new UserVo();
 		vo.setIdString(id);
-		vo.setPassword(password);
+		vo.setEncryptedPassword(password);
 		
 		// userService 주입하기!!
 		UserVo authUser = userService.getUser(vo);

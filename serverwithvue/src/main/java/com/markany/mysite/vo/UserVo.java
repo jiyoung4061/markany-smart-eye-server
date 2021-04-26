@@ -1,14 +1,7 @@
 package com.markany.mysite.vo;
 
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
 public class UserVo {
 	private Long id;
-	
-	@NotEmpty
-	@Length(min=2, max=8)
 	private String idString;
 	private String gender;
 	private String firstName;
@@ -16,7 +9,7 @@ public class UserVo {
 	private String team;
 	private String rank;
 	private String role;
-	private String password;
+	private String encryptedPassword;
 	private String ptzLevel;
 	private String autoChangeTime;
 	private String autoHandlingTime;
@@ -70,11 +63,11 @@ public class UserVo {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public String getPassword() {
-		return password;
+	public String getEncryptedPassword() {
+		return encryptedPassword;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
 	}
 	public String getPtzLevel() {
 		return ptzLevel;
@@ -110,8 +103,8 @@ public class UserVo {
 	@Override
 	public String toString() {
 		return "UserVo [id=" + id + ", idString=" + idString + ", gender=" + gender + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", team=" + team + ", rank=" + rank + ", role=" + role + ", password="
-				+ password + ", ptzLevel=" + ptzLevel + ", autoChangeTime=" + autoChangeTime + ", autoHandlingTime="
+				+ ", lastName=" + lastName + ", team=" + team + ", rank=" + rank + ", role=" + role + ", encryptedPassword="
+				+ encryptedPassword + ", ptzLevel=" + ptzLevel + ", autoChangeTime=" + autoChangeTime + ", autoHandlingTime="
 				+ autoHandlingTime + ", blockUntil=" + blockUntil + ", joinDate=" + joinDate + "]";
 	}
 }

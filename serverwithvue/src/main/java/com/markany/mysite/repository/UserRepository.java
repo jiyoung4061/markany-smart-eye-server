@@ -19,8 +19,18 @@ public class UserRepository {
 	public List<UserVo> findAll() {
 		return sqlSession.selectList("user.findAll");
 	}
+	
+	public int insert(UserVo uservo) {
+		return sqlSession.insert("user.insert", uservo);
+	}
+	
+	
+	
+	
+	
+	
 	public UserVo findByIdAndPassword(UserVo vo){
-		return sqlSession.selectOne("user.findByIAndPassword", vo);
+		return sqlSession.selectOne("user.findByIdAndPassword", vo);
 	}
 	
 	
@@ -47,9 +57,9 @@ public class UserRepository {
 		return sqlSession.selectOne("user.findByEmailAndPassword2", vo);
 	}
 
-	public int insert(UserVo userVo) throws UserRepositoryException {
-		return sqlSession.insert("user.insert", userVo);
-	}
+//	public int insert(UserVo userVo) throws UserRepositoryException {
+//		return sqlSession.insert("user.insert", userVo);
+//	}
 
 	public int update(UserVo vo) {
 		return sqlSession.update("user.update", vo);

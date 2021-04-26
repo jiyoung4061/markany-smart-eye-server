@@ -9,6 +9,19 @@
 		]]>
 	</select>
 	
+	<insert id="insert" parameterType="uservo">
+		<![CDATA[
+			insert 
+			  into user_infos(id, id_string, last_name, first_name, gender, encrypted_password, team, rank, role)
+			values ( ,#{idString}, #{lastName}, #{firstName}, #{gender}, #{encryptedPassword}, #{team}, #{rank}, #{role})		
+		]]>	
+	</insert>
+	
+	
+	
+	
+	
+	
 	<select id="findByIdAndPassword" parameterType="uservo" resultType="uservo">
 		<![CDATA[
 			select id, first_name, last_name
@@ -21,18 +34,7 @@
 	
 	
 
-	<insert id="insert" parameterType="uservo">
-		<![CDATA[
-			insert 
-			  into user
-			values (null, #{name }, #{email }, #{password }, #{gender }, 'USER', now())		
-		]]>
-		<selectKey keyProperty="no" resultType="long" order="AFTER">
-		<![CDATA[
-			select last_insert_id()
-		]]>					
-		</selectKey>		
-	</insert>
+	
 
 	<select id="find" parameterType="long" resultType="uservo">
 		<![CDATA[
