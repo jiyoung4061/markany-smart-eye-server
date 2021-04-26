@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cctv">	
+	<select id="findAll" resultType="cctvvo">
+		<![CDATA[
+			select	id, id_string as idString, name, comment, address, ip_address as ipAddress, 
+					area1, area2, area3, latitude, longitude, manage_port as managePort, rtsp_port as rtspPort, 
+        			rtsp_path as rtspPath, onvif_port as onvifPort, onvif_profile as onvifProfile, manufacturer, 
+        			model, username, alarm, camera_type as cameraType, ptz_control_usage as ptzControlUsage, pan,
+			        tilt, pan_flip as panFlip, pan_degree as panDegree, tilt_degree as tiltDegree, 
+			        play_before as playBefore, play_after as playAfter, forwarded, cap_image as capImage, 
+			        updated_at as updatedAt, firmware_version as firmwareVersion, emergency_bell as emergencyBell, 
+			        lua_script as luaScript, health_check as healthCheck, ptz_script as ptzScript
+			from cctv_infos;
+		]]>	
+	</select>
+
+</mapper>
