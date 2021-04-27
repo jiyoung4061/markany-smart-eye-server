@@ -9,15 +9,6 @@
 		]]>
 	</select>
 	
-	<select id="findById" parameterType="Long" resultType="uservo">
-		<![CDATA[
-			select id, id_string as idString, gender, first_name as firstName, last_name as lastName, team, rank, role, 
-					ptz_level as ptzLevel, auto_change_time as autoChangeTime, auto_handling_time as autoHandlingTime, block_until as blockUntil
-			  from user_infos;
-			 where id=#{id }
-		]]>
-	</select>
-	
 	<insert id="insert" parameterType="uservo">
 		<![CDATA[
 			insert 
@@ -53,49 +44,13 @@
 					 where id=#{id }
 				]]>					
 			</otherwise>
-		</choose>
-		
+		</choose>		
 	</update>
 	
-	
-	
-	
-	
-	
-	
-	
-	<select id="findByIdAndPassword" parameterType="uservo" resultType="uservo">
+	<delete id="delete" parameterType="Long">
 		<![CDATA[
-			select id, first_name, last_name
-			  from user_infos
-			 where id=#{id }
-		]]>					
-	</select>
-	
-	
-	
-	
-
-	
-
-	<select id="find" parameterType="long" resultType="uservo">
-		<![CDATA[
-			select no, name, email, gender
-			  from user
-			 where no=#{no }
-		]]>					
-	</select>
-
-	
-	<select id="findByEmailAndPassword2" parameterType="map" resultType="uservo">
-		<![CDATA[
-			select no, name, role
-			  from user
-			 where email=#{e }
-			   and password=#{p }
-		]]>					
-	</select>
-	
-	
-	
+			delete from user_infos
+			where id=#{id }
+		]]>	
+	</delete>
 </mapper>

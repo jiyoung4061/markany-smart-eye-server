@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,13 +41,10 @@ public class UserController {
 		return JsonResult.success(uservo);
 	}
 	
-	
-	
-	// user 1명 불러오기(by id)
-	@RequestMapping("/selectbyid")
-	public JsonResult selectById(@RequestBody Long id) {
-		UserVo uservo = userService.getUser(id);
-		System.out.println(">>" + uservo);
+	// user 삭제하기
+	@RequestMapping("/delete")
+	public JsonResult delete(@RequestBody UserVo uservo) {
+		userService.deleteUser(uservo.getId());
 		return JsonResult.success(uservo);
 	}
 }
