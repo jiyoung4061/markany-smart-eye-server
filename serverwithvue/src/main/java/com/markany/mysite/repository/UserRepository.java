@@ -20,10 +20,17 @@ public class UserRepository {
 		return sqlSession.selectList("user.findAll");
 	}
 	
+	public UserVo findById(Long id) {
+		return sqlSession.selectOne("user.findById", id);
+	}
+	
 	public int insert(UserVo uservo) {
 		return sqlSession.insert("user.insert", uservo);
 	}
-	
+
+	public int update(UserVo uservo) {
+		return sqlSession.update("user.update", uservo);
+	}
 	
 	
 	
@@ -61,7 +68,4 @@ public class UserRepository {
 //		return sqlSession.insert("user.insert", userVo);
 //	}
 
-	public int update(UserVo vo) {
-		return sqlSession.update("user.update", vo);
-	}
 }

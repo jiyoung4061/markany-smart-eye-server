@@ -9,6 +9,15 @@
 		]]>
 	</select>
 	
+	<select id="findById" parameterType="Long" resultType="uservo">
+		<![CDATA[
+			select id, id_string as idString, gender, first_name as firstName, last_name as lastName, team, rank, role, 
+					ptz_level as ptzLevel, auto_change_time as autoChangeTime, auto_handling_time as autoHandlingTime, block_until as blockUntil
+			  from user_infos;
+			 where id=#{id }
+		]]>
+	</select>
+	
 	<insert id="insert" parameterType="uservo">
 		<![CDATA[
 			insert 
@@ -16,6 +25,43 @@
 			values (#{idString}, #{lastName}, #{firstName}, #{gender}, #{encryptedPassword}, #{team}, #{rank}, #{role})		
 		]]>	
 	</insert>
+	
+	<update id="update" parameterType="uservo">
+		<choose>
+			<when test='encryptedPassword != null'>
+				<![CDATA[
+					update user_infos
+					   set	first_name=#{firstName },
+					   		last_name=#{lastName },	   
+					       	gender=#{gender },
+					       	encrypted_password=#{encryptedPassword },
+					       	team=#{team },
+					       	rank=#{rank },
+					       	role=#{role }
+					 where id=#{id }
+				]]>					
+			</when>
+			<otherwise>
+				<![CDATA[
+					update user_infos
+					   set	first_name=#{firstName },
+					   		last_name=#{lastName },	   
+					       	gender=#{gender },
+					       	team=#{team },
+					       	rank=#{rank },
+					       	role=#{role }
+					 where id=#{id }
+				]]>					
+			</otherwise>
+		</choose>
+		
+	</update>
+	
+	
+	
+	
+	
+	
 	
 	
 	<select id="findByIdAndPassword" parameterType="uservo" resultType="uservo">
@@ -40,13 +86,6 @@
 		]]>					
 	</select>
 
-	<select id="findByEmail" parameterType="string" resultType="uservo">
-		<![CDATA[
-			select no, name, email, gender
-			  from user
-			 where email=#{email }
-		]]>					
-	</select>
 	
 	<select id="findByEmailAndPassword2" parameterType="map" resultType="uservo">
 		<![CDATA[
@@ -57,27 +96,6 @@
 		]]>					
 	</select>
 	
-	<update id="update" parameterType="uservo">
-		<choose>
-			<when test='password != ""'>
-				<![CDATA[
-					update user
-					   set name=#{name },	   
-					       password=#{password },
-					       gender=#{gender }
-					 where no=#{no }
-				]]>					
-			</when>
-			<otherwise>
-				<![CDATA[
-					update user
-					   set name=#{name },
-					       gender=#{gender }
-					 where no=#{no }
-				]]>					
-			</otherwise>
-		</choose>
-		
-	</update>
+	
 	
 </mapper>

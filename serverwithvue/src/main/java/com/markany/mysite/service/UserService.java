@@ -25,9 +25,17 @@ public class UserService {
 		userRepository.insert(uservo);
 	}
 	
+	public boolean updateUser(UserVo uservo) {
+		int count = userRepository.update(uservo);
+		return count == 1;
+	}
 	
 	
 	
+	
+	public UserVo getUser(Long id) {
+		return userRepository.findById(id);
+	}
 	public UserVo getUser(UserVo vo) {
 		// System.out.println("findbyEmail-->" + userRepository.findByEmail(vo.getEmail()));
 		// return userRepository.findByEmailAndPassword2(vo);
@@ -48,14 +56,9 @@ public class UserService {
 //	}
 //	
 
-	public UserVo getUser(Long no) {
-		return userRepository.findByNo(no);
-	}
 
-	public boolean updateUser(UserVo vo) {
-		int count = userRepository.update(vo);
-		return count == 1;
-	}
+	
+
 	
 }
 
