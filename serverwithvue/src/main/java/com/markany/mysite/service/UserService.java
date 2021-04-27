@@ -32,5 +32,8 @@ public class UserService {
 		return count > 0;
 	}
 	
+	public UserVo getUserById(UserVo uservo) {
+		return userRepository.findById(uservo);
+	}
 }
 

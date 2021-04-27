@@ -30,4 +30,8 @@ public class UserRepository {
 	public int delete(Long id) {
 		return sqlSession.delete("user.delete", id);
 	}
+	
+	public UserVo findById(UserVo uservo) {
+		return sqlSession.selectOne("user.findById", uservo);
+	}
 }

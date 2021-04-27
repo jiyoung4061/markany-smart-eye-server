@@ -25,7 +25,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		vo.setEncryptedPassword(password);
 		
 		// userService 주입하기!!
-		UserVo authUser = userService.getUser(vo);
+		UserVo authUser = userService.getUserById(vo);
 		if(authUser == null) {
 			request.setAttribute("userVo", vo);
 			request.getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);

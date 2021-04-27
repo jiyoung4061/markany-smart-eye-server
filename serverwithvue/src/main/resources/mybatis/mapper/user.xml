@@ -53,4 +53,13 @@
 			where id=#{id }
 		]]>	
 	</delete>
+	
+	<select id="findById" resultType="uservo">
+		<![CDATA[
+			select id, id_string as idString, gender, first_name as firstName, last_name as lastName, team, rank, role, 
+					ptz_level as ptzLevel, auto_change_time as autoChangeTime, auto_handling_time as autoHandlingTime, block_until as blockUntil
+			from user_infos
+			where id = #{id }
+		]]>
+	</select>
 </mapper>
