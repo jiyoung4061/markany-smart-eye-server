@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cctvgroup">	
+	<select id="findAll" resultType="cctvgroupvo">
+		<![CDATA[
+			select	id, name
+			from 	cctv_group_infos;
+		]]>	
+	</select>
+
+	<select id="findlistbyid" parameterType="Long" resultType="cctvgroupvo">
+		<![CDATA[
+			select 	cgi.id as id, cgi.name as name
+			from 	user_infos as ui, user_cctvgroups as uc, cctv_group_infos as cgi
+			where 	ui.id = uc.user_info_id
+					and uc.cctv_group_info_id = cgi.id
+				    and ui.id=#{id}
+		]]>
+	</select>
+</mapper>

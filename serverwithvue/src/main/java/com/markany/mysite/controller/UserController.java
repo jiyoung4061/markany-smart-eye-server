@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.markany.mysite.dto.JsonResult;
+import com.markany.mysite.service.CCTVGroupService;
 import com.markany.mysite.service.UserService;
+import com.markany.mysite.vo.CCTVGroupVo;
 import com.markany.mysite.vo.UserVo;
 
 @CrossOrigin
@@ -19,6 +21,9 @@ import com.markany.mysite.vo.UserVo;
 public class UserController {	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CCTVGroupService cctvgroupService;
 	
 	// user list 불러오기
 	@RequestMapping("/list")
@@ -37,7 +42,7 @@ public class UserController {
 	// user 수정하기
 	@RequestMapping("/update")
 	public JsonResult update(@RequestBody UserVo uservo) {
-		userService.updateUser(uservo);
+		userService.updateUser(uservo);		
 		return JsonResult.success(uservo);
 	}
 	
